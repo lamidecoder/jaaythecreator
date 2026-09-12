@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Lenis (see components/smooth-scroll.tsx) */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  background-color: #15110d;
+}
+
+body {
+  color: #f3eee3;
+  font-family: var(--font-geist-sans), Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background-color: #6e2a2c;
+  color: #f3eee3;
+}
+
+/* Thin, quiet scrollbar rather than the browser default. */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #15110d;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #3a332b;
+  border: 2px solid #15110d;
+  border-radius: 999px;
+}
+html {
+  scrollbar-color: #3a332b #15110d;
+}
+
+/* A visible, deliberate focus ring — never remove focus outlines outright. */
+:focus-visible {
+  outline: 2px solid #c99a93;
+  outline-offset: 3px;
+}
+
+/* Hides the native cursor only on fine-pointer devices, once the custom
+   cursor component has mounted (see components/custom-cursor.tsx). Touch
+   devices never get this class. */
+.has-custom-cursor {
+  cursor: none;
+}
+.has-custom-cursor a,
+.has-custom-cursor button {
+  cursor: none;
+}
+
+/* Subtle, fixed film-grain texture used once, globally, rather than per
+   section. See components/grain-overlay.tsx. */
+.grain-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
