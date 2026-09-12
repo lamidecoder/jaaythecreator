@@ -7,6 +7,9 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion, useReducedMotion } from "motion/react";
 import { prefersReducedMotion } from "@/lib/motion";
 import { placeholderTone } from "@/lib/placeholder-tones";
+import { getProject } from "@/lib/projects";
+import { videoMimeType } from "./media-frame";
+import { site } from "@/lib/site";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -25,6 +28,9 @@ export function Hero() {
   const subRef = useRef<HTMLParagraphElement>(null);
   const cueRef = useRef<HTMLSpanElement>(null);
   const reduceMotion = useReducedMotion();
+
+  const heroProject = getProject(site.heroProjectSlug);
+  const heroSrc = heroProject?.hero.src;
 
   useGSAP(
     () => {
@@ -50,12 +56,27 @@ export function Hero() {
     <section ref={containerRef} className="relative h-[220vh]">
       <div className="sticky top-0 h-screen w-full overflow-hidden bg-ink">
         <div ref={frameRef} className="absolute inset-0 origin-center overflow-hidden">
-          <motion.div
-            className="absolute inset-0"
-            style={{ backgroundImage: placeholderTone(1) }}
-            animate={reduceMotion ? undefined : { scale: [1, 1.05, 1] }}
-            transition={reduceMotion ? undefined : { duration: 22, repeat: Infinity, ease: "easeInOut" }}
-          />
+          {heroSrc ? (
+            <motion.video
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              className="absolute inset-0 h-full w-full object-cover"
+              animate={reduceMotion ? undefined : { scale: [1, 1.05, 1] }}
+              transition={reduceMotion ? undefined : { duration: 22, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <source src={heroSrc} type={videoMimeType(heroSrc)} />
+            </motion.video>
+          ) : (
+            <motion.div
+              className="absolute inset-0"
+              style={{ backgroundImage: placeholderTone(1) }}
+              animate={reduceMotion ? undefined : { scale: [1, 1.05, 1] }}
+              transition={reduceMotion ? undefined : { duration: 22, repeat: Infinity, ease: "easeInOut" }}
+            />
+          )}
           <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/10 to-ink/50" />
         </div>
 
@@ -63,10 +84,15 @@ export function Hero() {
           <h1
             ref={headlineRef}
             className="max-w-2xl font-serif text-display-lg text-paper"
+            style={{ textShadow: "0 2px 24px rgba(0,0,0,0.6)" }}
           >
             We keep what the day leaves behind.
           </h1>
-          <p ref={subRef} className="mt-6 max-w-md font-sans text-sm text-bone sm:text-base">
+          <p
+            ref={subRef}
+            className="mt-6 max-w-md font-sans text-sm text-bone sm:text-base"
+            style={{ textShadow: "0 1px 12px rgba(0,0,0,0.7)" }}
+          >
             {"Weddings, bridal prep, and asoebi moments. UK-based, available worldwide."}
           </p>
         </div>
@@ -74,6 +100,7 @@ export function Hero() {
         <span
           ref={cueRef}
           className="absolute bottom-8 right-6 font-sans text-[11px] uppercase tracking-[0.25em] text-paper/50 sm:right-10"
+          style={{ textShadow: "0 1px 12px rgba(0,0,0,0.7)" }}
         >
           Scroll
         </span>

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { AnimatePresence } from "motion/react";
-import { galleryImages } from "@/lib/gallery";
+import { getGalleryImages } from "@/lib/projects";
 import { MediaFrame } from "./media-frame";
 import { Lightbox } from "./lightbox";
 import { Reveal } from "./reveal";
@@ -16,6 +16,7 @@ const sizeSpan: Record<string, string> = {
 
 export function GalleryGrid() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const galleryImages = getGalleryImages();
 
   return (
     <section className="bg-ink px-6 pb-28 pt-40 sm:px-10 sm:pt-48">

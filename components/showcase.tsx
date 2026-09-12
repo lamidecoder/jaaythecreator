@@ -13,7 +13,7 @@ const layoutSpan: Record<string, string> = {
 export function Showcase() {
   const featured = projects.filter((project) => project.featured);
   const rest = projects.filter((project) => !project.featured);
-  const shown = [...featured, ...rest].slice(0, 6);
+  const shown = [...featured, ...rest].slice(0, 9);
 
   return (
     <section className="bg-ink px-6 pb-28 pt-8 sm:px-10 sm:pt-16">

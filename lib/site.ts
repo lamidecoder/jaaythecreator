@@ -37,4 +37,10 @@ export const site = {
     { label: "Booking", href: "/booking" },
     { label: "Contact", href: "/contact" },
   ],
+
+  // Which project's hero media plays as the homepage's full-bleed
+  // background. Change this to any slug from lib/projects.ts whenever a
+  // better hero clip is ready, the homepage picks it up automatically.
+  // Falls back to the placeholder tone if this slug has no media yet.
+  heroProjectSlug: "piece-11",
 } as const;

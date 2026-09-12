@@ -1,13 +1,13 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import Image from "next/image";
 import type { MediaAsset } from "@/lib/projects";
 import { placeholderTone } from "@/lib/placeholder-tones";
 import { prefersReducedMotion } from "@/lib/motion";
 import { cn } from "@/lib/utils";
 
-function videoMimeType(src: string) {
+export function videoMimeType(src: string) {
   const ext = src.split(".").pop()?.toLowerCase();
   if (ext === "mov") return "video/quicktime";
   if (ext === "webm") return "video/webm";
@@ -23,11 +23,15 @@ type MediaFrameProps = {
   /** Shown only in placeholder mode, in a quiet corner. Omit for a clean, textless frame. */
   caption?: string;
   /**
-   * "cover" (default) locks the wrapper to the media's own aspect ratio and
-   * fills it, used everywhere in the exhibition grids. "contain" instead
-   * fills whatever box the parent gives it and letterboxes the media inside,
-   * used only by the lightbox, where the box size is fixed and the image's
-   * own ratio needs to be seen in full rather than cropped.
+   * "cover" (default) locks the wrapper to the media's own declared aspect
+   * ratio, used everywhere in the exhibition grids so tiles line up in a
+   * predictable grid. "contain" instead fills whatever box the parent
+   * gives it, used by the lightbox and the project-detail hero, where the
+   * box size is fixed by the layout itself.
+   *
+   * Neither mode crops the actual media: both use object-contain, so the
+   * full frame is always visible. "cover" only affects how the
+   * surrounding box gets its size, not how the media fits inside it.
    */
   fit?: "cover" | "contain";
 };
@@ -37,6 +41,14 @@ type MediaFrameProps = {
  * stays 9:16, a 4:3 photograph stays 4:3 — nothing here forces a crop to
  * 16:9. When a project has no `src` yet, it falls back to one of the
  * studio's placeholder tones instead of a broken file or a stock photo.
+ *
+ * Video plays via plain native autoplay (autoPlay + muted + playsInline),
+ * which every browser handles on its own with no JavaScript required.
+ * An earlier version gated playback behind an IntersectionObserver and a
+ * manual .play() call to pause off-screen video for performance, that's
+ * gone for now in favour of the simpler, more reliable version, it can be
+ * reintroduced later once real footage is in and performance tuning
+ * actually matters.
  */
 export function MediaFrame({
   media,
@@ -47,31 +59,14 @@ export function MediaFrame({
   fit = "cover",
 }: MediaFrameProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [inView, setInView] = useState(false);
 
   useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setInView(entry.isIntersecting);
-        if (!entry.isIntersecting) {
-          video.pause();
-          return;
-        }
-        if (!prefersReducedMotion()) {
-          video.play().catch(() => {
-            // Autoplay can be blocked before the first user interaction on
-            // some browsers; the poster frame stays visible in that case.
-          });
-        }
-      },
-      { threshold: 0.4 },
-    );
-
-    observer.observe(video);
-    return () => observer.disconnect();
+    // Safety net only: if the visitor has reduced motion turned on, stop
+    // the video right after it mounts rather than fighting the browser
+    // to never start it in the first place.
+    if (prefersReducedMotion()) {
+      videoRef.current?.pause();
+    }
   }, []);
 
   const [w, h] = media.aspect.split(":").map(Number);
@@ -85,14 +80,14 @@ export function MediaFrame({
         media.type === "video" ? (
           <video
             ref={videoRef}
+            autoPlay
             muted
             loop
             playsInline
-            preload="none"
+            preload="auto"
             poster={media.poster}
             aria-label={media.alt}
-            className={cn("absolute inset-0 h-full w-full", fit === "cover" ? "object-cover" : "object-contain")}
-            data-in-view={inView}
+            className="absolute inset-0 h-full w-full object-contain"
           >
             <source src={media.src} type={videoMimeType(media.src)} />
           </video>
@@ -103,7 +98,7 @@ export function MediaFrame({
             fill
             sizes={sizes}
             priority={priority}
-            className={fit === "cover" ? "object-cover" : "object-contain"}
+            className="object-contain"
           />
         )
       ) : (
