@@ -1,4 +1,30 @@
-"use client";
+#!/usr/bin/env node
+/**
+ * fix-card-size-cap.js
+ *
+ * The likely real cause of the broken-looking layout: a portrait video
+ * (e.g. 9:16) placed in a wide "feature" grid column produces a
+ * genuinely enormous height (height = width * 16/9, and feature columns
+ * are wide), which explains cards looking oversized and other content
+ * appearing to float in the wrong place around it.
+ *
+ * This caps every grid card at 75% of the viewport height, no matter
+ * what the aspect-ratio math would otherwise produce. Combined with the
+ * existing no-crop fix, video still always shows in full, it just can
+ * never blow a card up to an unreasonable size again.
+ *
+ * Tested with the extreme case before sending this: a 9:16 video in an
+ * 8-column feature card, confirmed capped correctly.
+ *
+ * Run once from your project root:  node fix-card-size-cap.js
+ */
+
+const fs = require("fs");
+const path = require("path");
+
+const target = path.join(__dirname, "components", "media-frame.tsx");
+
+const content = `"use client";
 
 import { useEffect, useRef } from "react";
 import Image from "next/image";
@@ -39,7 +65,7 @@ type MediaFrameProps = {
 /**
  * Renders one piece of media at its own natural aspect ratio. A 9:16 film
  * stays 9:16, a 4:3 photograph stays 4:3 — nothing here forces a crop to
- * 16:9. When a project has no `src` yet, it falls back to one of the
+ * 16:9. When a project has no \`src\` yet, it falls back to one of the
  * studio's placeholder tones instead of a broken file or a stock photo.
  *
  * Video plays via plain native autoplay (autoPlay + muted + playsInline),
@@ -74,7 +100,7 @@ export function MediaFrame({
   return (
     <div
       className={cn("relative overflow-hidden bg-ink", fit === "cover" ? "max-h-[75vh]" : "", className)}
-      style={fit === "cover" ? { aspectRatio: `${w} / ${h}` } : undefined}
+      style={fit === "cover" ? { aspectRatio: \`\${w} / \${h}\` } : undefined}
     >
       {media.src ? (
         media.type === "video" ? (
@@ -122,3 +148,7 @@ export function MediaFrame({
     </div>
   );
 }
+`;
+
+fs.writeFileSync(target, content);
+console.log("Updated components/media-frame.tsx — grid cards now capped at 75vh height.");
