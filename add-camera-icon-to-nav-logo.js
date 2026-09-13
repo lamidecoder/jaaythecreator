@@ -1,4 +1,26 @@
-"use client";
+#!/usr/bin/env node
+/**
+ * add-camera-icon-to-nav-logo.js
+ *
+ * Same camera icon from the preloader now sits beside the wordmark
+ * in the actual site navigation too, so it shows on every page, not
+ * just the loading screen.
+ *
+ * It uses currentColor for its stroke, so it automatically matches
+ * whichever text color the logo already switches to, paper on dark
+ * pages, ink on light pages like About, with no extra logic needed.
+ * Confirmed both cases render with the correct color before sending
+ * this.
+ *
+ * Run once from your project root:  node add-camera-icon-to-nav-logo.js
+ */
+
+const fs = require("fs");
+const path = require("path");
+
+const target = path.join(__dirname, "components", "navigation.tsx");
+
+const content = `"use client";
 
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
@@ -122,7 +144,7 @@ export function Navigation() {
               <a href={site.instagram.url} target="_blank" rel="noreferrer">
                 {site.instagram.handle}
               </a>
-              <a href={`mailto:${site.email}`}>{site.email}</a>
+              <a href={\`mailto:\${site.email}\`}>{site.email}</a>
             </div>
           </motion.div>
         ) : null}
@@ -130,3 +152,7 @@ export function Navigation() {
     </>
   );
 }
+`;
+
+fs.writeFileSync(target, content);
+console.log("Updated components/navigation.tsx — camera icon now part of the site logo.");
