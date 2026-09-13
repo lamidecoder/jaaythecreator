@@ -1,9 +1,9 @@
 import { NextResponse } from "next/server";
+import { site } from "@/lib/site";
 
 /**
- * Validates and acknowledges a booking request. Nothing is sent or stored
- * yet, wire in a real email provider (Resend, Postmark) or CRM below once
- * credentials exist. See app/api/contact/route.ts for the same pattern.
+ * Same pattern as app/api/contact/route.ts — see that file for the full
+ * explanation of how to enable this with a RESEND_API_KEY.
  */
 export async function POST(request: Request) {
   const body = await request.json().catch(() => null);
@@ -15,16 +15,36 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: false, error: "Name and email are required." }, { status: 400 });
   }
 
-  // TODO: send the booking request on, e.g. with Resend once an API key exists:
-  //
-  // import { Resend } from "resend";
-  // const resend = new Resend(process.env.RESEND_API_KEY);
-  // await resend.emails.send({
-  //   from: "Jaaythecreator <bookings@yourdomain.com>",
-  //   to: "you@yourdomain.com",
-  //   subject: `New booking request from ${name}`,
-  //   text: JSON.stringify(body, null, 2),
-  // });
+  const apiKey = process.env.RESEND_API_KEY;
+  if (apiKey) {
+    const to = process.env.CONTACT_EMAIL_TO || site.email;
+    const fields = Object.entries(body || {})
+      .filter(([, value]) => typeof value === "string" && value.trim())
+      .map(([key, value]) => `${key}: ${value}`)
+      .join("\n");
+
+    try {
+      const res = await fetch("https://api.resend.com/emails", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${apiKey}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          from: `${site.name} website <onboarding@resend.dev>`,
+          to,
+          reply_to: email,
+          subject: `New booking request from ${name}`,
+          text: fields,
+        }),
+      });
+      if (!res.ok) {
+        console.error("Resend send failed:", await res.text());
+      }
+    } catch (err) {
+      console.error("Resend send error:", err);
+    }
+  }
 
   return NextResponse.json({ ok: true });
 }
