@@ -37,7 +37,7 @@ export function IntroLoader() {
   function finish() {
     setLeaving(true);
     sessionStorage.setItem("jtc-intro-seen", "1");
-    window.setTimeout(() => setVisible(false), 700);
+    window.setTimeout(() => setVisible(false), 800);
   }
 
   if (!visible) return null;
@@ -46,14 +46,32 @@ export function IntroLoader() {
     <motion.div
       aria-hidden="true"
       onClick={finish}
-      className="fixed inset-0 z-[80] flex cursor-pointer flex-col items-center justify-center gap-6 bg-ink"
-      animate={{ opacity: leaving ? 0 : 1 }}
-      transition={{ duration: 0.7, ease: "easeInOut" }}
+      className="fixed inset-0 z-[80] flex cursor-pointer flex-col items-center justify-center gap-8 bg-ink"
+      initial={false}
+      animate={{ clipPath: leaving ? "inset(0 0 0 100%)" : "inset(0 0 0 0%)" }}
+      transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
     >
-      <span className="font-serif text-2xl tracking-wide text-paper sm:text-3xl">{site.name}</span>
-      <span className="font-sans text-xs tracking-[0.3em] text-bone">
-        {String(progress).padStart(2, "0")} / 100
-      </span>
+      <motion.span
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+        className="font-serif text-3xl italic tracking-wide text-paper sm:text-4xl"
+      >
+        {site.name}
+      </motion.span>
+
+      <div className="flex w-40 flex-col items-center gap-3 sm:w-56">
+        <div className="h-px w-full overflow-hidden bg-paper/15">
+          <motion.div
+            className="h-full bg-paper"
+            animate={{ width: `${progress}%` }}
+            transition={{ duration: 0.1, ease: "linear" }}
+          />
+        </div>
+        <span className="font-sans text-[10px] tracking-[0.3em] text-bone">
+          {String(progress).padStart(2, "0")} / 100
+        </span>
+      </div>
     </motion.div>
   );
 }

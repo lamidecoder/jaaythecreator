@@ -84,7 +84,7 @@ export function MediaFrame({
             muted
             loop
             playsInline
-            preload="auto"
+            preload="metadata"
             poster={media.poster}
             aria-label={media.alt}
             className="absolute inset-0 h-full w-full object-contain"

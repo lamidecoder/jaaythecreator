@@ -34,6 +34,7 @@ export const site = {
     { label: "Work", href: "/work" },
     { label: "About", href: "/about" },
     { label: "Services", href: "/services" },
+    { label: "Reviews & FAQ", href: "/faq" },
     { label: "Booking", href: "/booking" },
     { label: "Contact", href: "/contact" },
   ],

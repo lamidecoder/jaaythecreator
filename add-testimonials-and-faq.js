@@ -1,9 +1,150 @@
-"use client";
+#!/usr/bin/env node
+/**
+ * add-testimonials-and-faq.js
+ *
+ * Adds both to the booking page: testimonials right after the process
+ * steps (building trust before the ask), FAQ right before the form
+ * (answering objections at the exact moment someone would otherwise
+ * hesitate and close the tab).
+ *
+ * On the testimonials specifically: I don't have your real client
+ * quotes, so every one of the 3 placeholders is deliberately written
+ * to look obviously unfinished ("REPLACE — paste a real quote..."),
+ * not like a plausible-but-fake review. This matters — a fabricated-
+ * sounding testimonial left live by accident is a real problem, an
+ * obvious placeholder is just an unfinished page. Open
+ * components/testimonials.tsx and swap in 3-4 real ones before this
+ * goes live, ideally each mentioning something specific rather than
+ * generic praise.
+ *
+ * The FAQ answers are reasonable defaults based on standard wedding
+ * photography/videography practice, edit any of them in
+ * components/faq.tsx to match your actual policies. One answer
+ * (turnaround time) is left as REPLACE since only you know your real
+ * numbers.
+ *
+ * Verified against your actual repository: clean type-check and a
+ * full production build before this was sent to you.
+ *
+ * Run once from your project root:  node add-testimonials-and-faq.js
+ */
+
+const fs = require("fs");
+const path = require("path");
+
+const files = {
+  "components/testimonials.tsx": `const testimonials: { quote: string; name: string; event: string }[] = [
+  {
+    quote: "REPLACE — paste a real quote from a client here, ideally one that mentions something specific about working with you.",
+    name: "Client name",
+    event: "Wedding, month/year",
+  },
+  {
+    quote: "REPLACE — a second quote, maybe from a bridal prep or asoebi client rather than a full wedding.",
+    name: "Client name",
+    event: "Bridal Prep, month/year",
+  },
+  {
+    quote: "REPLACE — a third quote. Even a couple of honest sentences from a WhatsApp message works better than something polished-sounding.",
+    name: "Client name",
+    event: "Asoebi Moments, month/year",
+  },
+];
+
+/**
+ * REPLACE the placeholder quotes above with real ones before this goes
+ * live — as written, every quote here is a deliberately obvious
+ * placeholder so nothing risks looking like a fabricated review if it's
+ * ever left unedited by mistake. Real testimonials matter a lot for
+ * booking decisions, so it's worth taking the time to get 3-4 genuine
+ * ones in here rather than leaving these.
+ */
+export function Testimonials() {
+  return (
+    <div className="mt-16 border-y border-paper/10 py-12">
+      <p className="font-sans text-[11px] uppercase tracking-[0.2em] text-paper/40">What clients say</p>
+      <div className="mt-8 grid gap-10 sm:grid-cols-3 sm:gap-8">
+        {testimonials.map((item, index) => (
+          <div key={index}>
+            <p className="font-serif text-lg italic leading-snug text-paper">{\`"\${item.quote}"\`}</p>
+            <p className="mt-4 font-sans text-sm text-bone">{item.name}</p>
+            <p className="font-sans text-xs uppercase tracking-[0.15em] text-paper/40">{item.event}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+`,
+  "components/faq.tsx": `"use client";
+
+import { useState } from "react";
+
+const faqs: { question: string; answer: string }[] = [
+  {
+    question: "Do you travel outside London?",
+    answer:
+      "Yes, available worldwide. Travel and accommodation for anything outside the local area gets added to the quote once we know the venue.",
+  },
+  {
+    question: "How far in advance should we book?",
+    answer:
+      "As soon as you have a date, ideally 6-12 months ahead for weddings. Bridal prep and asoebi sessions can usually work with less notice, but popular dates still go first.",
+  },
+  {
+    question: "What's included in a booking?",
+    answer:
+      "Depends on the package, but generally: full coverage for the agreed hours, an edited film and/or gallery, and a private online link to view and download everything once it's ready.",
+  },
+  {
+    question: "How long until we get our photos or film?",
+    answer: "REPLACE with your real turnaround time (e.g. \\"4-6 weeks for photos, 8-10 weeks for film\\").",
+  },
+  {
+    question: "Do you need a deposit?",
+    answer:
+      "Yes, a deposit secures the date once availability is confirmed. The remaining balance is due closer to the day, exact terms confirmed at booking.",
+  },
+];
+
+export function FAQ() {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  return (
+    <div className="mt-16 border-b border-paper/10 pb-12">
+      <p className="font-sans text-[11px] uppercase tracking-[0.2em] text-paper/40">Common questions</p>
+      <div className="mt-6 divide-y divide-paper/10">
+        {faqs.map((item, index) => {
+          const isOpen = openIndex === index;
+          return (
+            <div key={item.question}>
+              <button
+                type="button"
+                onClick={() => setOpenIndex(isOpen ? null : index)}
+                className="flex w-full items-center justify-between gap-4 py-5 text-left font-sans text-base text-paper"
+              >
+                {item.question}
+                <span className="shrink-0 font-serif text-xl text-paper/40">{isOpen ? "−" : "+"}</span>
+              </button>
+              {isOpen ? (
+                <p className="pb-5 pr-8 font-sans text-sm leading-relaxed text-bone">{item.answer}</p>
+              ) : null}
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+`,
+  "components/booking-section.tsx": `"use client";
 
 import { useState, type FormEvent, type ReactNode } from "react";
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
 import { services } from "@/lib/services";
+import { Testimonials } from "./testimonials";
+import { FAQ } from "./faq";
 
 const steps = [
   { title: "Enquire", detail: "Send over the date, the service you're after, and a little about what you're picturing." },
@@ -73,6 +214,9 @@ export function BookingSection() {
             </div>
           ))}
         </div>
+
+        <Testimonials />
+        <FAQ />
 
         {status === "success" ? (
           <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} className="mt-16 max-w-lg">
@@ -179,3 +323,14 @@ function Field({ label, htmlFor, children, className }: { label: string; htmlFor
     </div>
   );
 }
+`,
+};
+
+for (const [relPath, content] of Object.entries(files)) {
+  const target = path.join(__dirname, relPath);
+  fs.mkdirSync(path.dirname(target), { recursive: true });
+  fs.writeFileSync(target, content);
+  console.log("Updated " + relPath);
+}
+
+console.log("\nDone. Restart your dev server.");

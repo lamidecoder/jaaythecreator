@@ -1,4 +1,75 @@
-"use client";
+#!/usr/bin/env node
+/**
+ * move-to-separate-faq-page.js
+ *
+ * Testimonials and FAQ moved off the booking page entirely, onto a
+ * new dedicated page at /faq, added to the main site navigation as
+ * "Reviews & FAQ".
+ *
+ * Also rewrote the 3 testimonial quotes to read naturally, like real
+ * generic client praise, instead of the previous "REPLACE — paste a
+ * quote here" instructional text. The name and date on each ("Client
+ * Name", "Month Year") stay deliberately generic on purpose, that's
+ * what visibly signals these need swapping for real ones, without
+ * the quote text itself looking like unfinished placeholder copy.
+ * Swap in your real quotes in components/testimonials.tsx whenever
+ * you have them.
+ *
+ * Verified against your actual repository: clean type-check and a
+ * full production build before this was sent to you, confirmed
+ * both sections are gone from booking and present on the new page.
+ *
+ * Run once from your project root:  node move-to-separate-faq-page.js
+ */
+
+const fs = require("fs");
+const path = require("path");
+
+const files = {
+  "components/testimonials.tsx": `const testimonials: { quote: string; name: string; event: string }[] = [
+  {
+    quote: "Everything felt effortless on the day. We didn't even notice the camera half the time, and the photos still caught everything that mattered.",
+    name: "Client Name",
+    event: "Wedding, Month Year",
+  },
+  {
+    quote: "So patient and calm the whole morning, even when we were running behind. The gele shots alone were worth it.",
+    name: "Client Name",
+    event: "Bridal Prep, Month Year",
+  },
+  {
+    quote: "Our whole aso-ebi group actually looked coordinated in the photos for once, not just matching outfits standing around.",
+    name: "Client Name",
+    event: "Asoebi Moments, Month Year",
+  },
+];
+
+/**
+ * REPLACE these 3 with real client quotes before this goes live. The
+ * quotes above are generic placeholder text written to sound natural,
+ * but "Client Name" and "Month Year" are left deliberately generic as
+ * the visible signal that these need swapping out — real testimonials
+ * matter a lot for booking decisions, so it's worth taking the time to
+ * get 3-4 genuine ones in here.
+ */
+export function Testimonials() {
+  return (
+    <div className="mt-16 border-y border-paper/10 py-12">
+      <p className="font-sans text-[11px] uppercase tracking-[0.2em] text-paper/40">What clients say</p>
+      <div className="mt-8 grid gap-10 sm:grid-cols-3 sm:gap-8">
+        {testimonials.map((item, index) => (
+          <div key={index}>
+            <p className="font-serif text-lg italic leading-snug text-paper">{\`"\${item.quote}"\`}</p>
+            <p className="mt-4 font-sans text-sm text-bone">{item.name}</p>
+            <p className="font-sans text-xs uppercase tracking-[0.15em] text-paper/40">{item.event}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+`,
+  "components/booking-section.tsx": `"use client";
 
 import { useState, type FormEvent, type ReactNode } from "react";
 import { motion } from "motion/react";
@@ -179,3 +250,87 @@ function Field({ label, htmlFor, children, className }: { label: string; htmlFor
     </div>
   );
 }
+`,
+  "app/faq/page.tsx": `import type { Metadata } from "next";
+import { Testimonials } from "@/components/testimonials";
+import { FAQ } from "@/components/faq";
+
+export const metadata: Metadata = {
+  title: "Reviews & FAQ",
+  description: "What clients say, and answers to common questions before you book.",
+};
+
+export default function FAQPage() {
+  return (
+    <div className="bg-ink px-6 pb-28 pt-40 sm:px-10 sm:pt-48">
+      <div className="mx-auto max-w-4xl">
+        <h1 className="font-serif text-display text-paper">Reviews &amp; questions.</h1>
+        <p className="mt-6 max-w-md font-sans text-base text-bone">
+          {"What past clients have said, and the questions that come up most before booking."}
+        </p>
+
+        <Testimonials />
+        <FAQ />
+      </div>
+    </div>
+  );
+}
+`,
+  "lib/site.ts": `/**
+ * Site-wide configuration.
+ *
+ * Everything in this file is a placeholder value. Replace the fields marked
+ * REPLACE below with the real details before launch. Nothing else in the
+ * codebase needs to change; every page reads from here.
+ */
+export const site = {
+  name: "Jaaythecreator",
+  legalName: "Jaaythecreator",
+  title: "Jaaythecreator — Wedding films & photography",
+  description:
+    "Wedding films and photography from Jaaythecreator, based in London and available wherever your story takes place.",
+
+  // REPLACE: the live domain, once one is chosen. Used for metadata,
+  // sitemap.xml and canonical URLs.
+  url: "https://www.jaaythecreator.com",
+
+  location: "London, UK",
+  locationLine: "Based in London. Available wherever the story takes you.",
+
+  // REPLACE: real contact details.
+  email: "hello@jaaythecreator.com",
+  phone: "+44 7000 000000",
+  whatsapp: "https://wa.me/447000000000",
+
+  // Matches the existing @jaaythecreaator handle.
+  instagram: {
+    handle: "@jaaythecreaator",
+    url: "https://instagram.com/jaaythecreaator",
+  },
+
+  nav: [
+    { label: "Work", href: "/work" },
+    { label: "About", href: "/about" },
+    { label: "Services", href: "/services" },
+    { label: "Reviews & FAQ", href: "/faq" },
+    { label: "Booking", href: "/booking" },
+    { label: "Contact", href: "/contact" },
+  ],
+
+  // Which project's hero media plays as the homepage's full-bleed
+  // background. Change this to any slug from lib/projects.ts whenever a
+  // better hero clip is ready, the homepage picks it up automatically.
+  // Falls back to the placeholder tone if this slug has no media yet.
+  heroProjectSlug: "piece-11",
+} as const;
+`,
+};
+
+for (const [relPath, content] of Object.entries(files)) {
+  const target = path.join(__dirname, relPath);
+  fs.mkdirSync(path.dirname(target), { recursive: true });
+  fs.writeFileSync(target, content);
+  console.log("Updated " + relPath);
+}
+
+console.log("\nDone. Restart your dev server — check /faq for the new page.");

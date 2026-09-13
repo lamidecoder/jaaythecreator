@@ -48,6 +48,16 @@ export default function ContactPage() {
                 <dd className="mt-1 text-paper">{site.location}</dd>
               </div>
             </dl>
+
+            <div className="relative mt-10 aspect-[4/5] overflow-hidden">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/media/work/mint-maroon-1/hero.jpg"
+                alt="A guest laughing at a wedding, holding a hand fan"
+                loading="lazy"
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+            </div>
           </div>
 
           <div className="sm:col-span-7">

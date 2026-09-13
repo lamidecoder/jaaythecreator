@@ -41,7 +41,7 @@ export function Hero() {
           trigger: containerRef.current,
           start: "top top",
           end: "bottom top",
-          scrub: 0.6,
+          scrub: 0.3,
         },
       })
         .to(frameRef.current, { scale: 0.86, borderRadius: 28, ease: "none" }, 0)
