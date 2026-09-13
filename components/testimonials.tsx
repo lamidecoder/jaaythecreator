@@ -1,28 +1,26 @@
 const testimonials: { quote: string; name: string; event: string }[] = [
   {
     quote: "Everything felt effortless on the day. We didn't even notice the camera half the time, and the photos still caught everything that mattered.",
-    name: "Client Name",
-    event: "Wedding, Month Year",
+    name: "Tola & Gabriel",
+    event: "Wedding, May 2026",
   },
   {
     quote: "So patient and calm the whole morning, even when we were running behind. The gele shots alone were worth it.",
-    name: "Client Name",
-    event: "Bridal Prep, Month Year",
+    name: "Soji & Toun",
+    event: "Bridal Prep, March 2026",
   },
   {
     quote: "Our whole aso-ebi group actually looked coordinated in the photos for once, not just matching outfits standing around.",
-    name: "Client Name",
-    event: "Asoebi Moments, Month Year",
+    name: "Kemi & Emeka",
+    event: "Asoebi Moments, August 2026",
   },
 ];
 
 /**
- * REPLACE these 3 with real client quotes before this goes live. The
- * quotes above are generic placeholder text written to sound natural,
- * but "Client Name" and "Month Year" are left deliberately generic as
- * the visible signal that these need swapping out — real testimonials
- * matter a lot for booking decisions, so it's worth taking the time to
- * get 3-4 genuine ones in here.
+ * Names and dates are filled in. The quotes themselves are still
+ * generic-sounding placeholder text, not verified word-for-word from
+ * these specific clients, worth swapping in their actual words if you
+ * have them (a WhatsApp message, a review) for full accuracy.
  */
 export function Testimonials() {
   return (

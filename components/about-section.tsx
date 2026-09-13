@@ -25,17 +25,17 @@ export function AboutSection() {
             <div className="max-w-prose space-y-6 font-sans text-lg leading-relaxed text-ink/80">
               <p>
                 {
-                  "A gele takes forty minutes to tie properly, and most people never see that part. Neither did I, until I started paying real attention to it."
+                  "A gele takes forty minutes to tie properly, and most people never see that part. That's usually the piece I most want in frame, not just the finished look everyone already expects to see."
                 }
               </p>
               <p>
                 {
-                  "The pins, the folding, the small adjustments before anyone steps back to look, that hour usually holds more of the actual day than the fifteen minutes everyone poses for. I got into this work to keep that too, not just the moment everyone already knows to expect."
+                  "The pins, the folding, the small adjustments before anyone steps back to look, that hour tends to hold more of the actual day than the fifteen minutes everyone poses for. I'd rather be there with a camera for that than only show up once everyone's already ready."
                 }
               </p>
               <p>
                 {
-                  "Weddings, bridal prep, and asoebi moments, in whatever mix of photo and film each one calls for. UK-based, available worldwide."
+                  "Weddings, bridal prep, and asoebi moments, shot in whatever mix of photo and film each one calls for. UK-based, available worldwide."
                 }
               </p>
             </div>
