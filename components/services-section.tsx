@@ -53,6 +53,7 @@ export function ServicesSection({ headingLevel = "h2" }: { headingLevel?: "h1" |
                   type: "image",
                   aspect: "4:3",
                   alt: current.name,
+                  src: current.src,
                   placeholderTone: current.placeholderTone,
                 }}
               />

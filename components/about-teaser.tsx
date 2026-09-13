@@ -8,7 +8,13 @@ export function AboutTeaser() {
       <div className="mx-auto grid max-w-6xl gap-12 sm:grid-cols-12 sm:items-center sm:gap-8">
         <div className="sm:col-span-5">
           <MediaFrame
-            media={{ type: "image", aspect: "4:5", alt: "Bridal prep styling ahead of a wedding", placeholderTone: 4 }}
+            media={{
+              type: "image",
+              aspect: "4:5",
+              alt: "Bridal prep styling ahead of a wedding",
+              src: "/media/work/piece-8/hero.jpg",
+              placeholderTone: 4,
+            }}
           />
         </div>
         <Reveal className="sm:col-span-7">

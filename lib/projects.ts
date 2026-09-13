@@ -36,16 +36,214 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    slug: "teal-veil-1",
+    title: "Seafoam and Silk",
+    category: "Wedding",
+    date: "2026-09-13",
+    services: ["Wedding"],
+    excerpt: "A veil catching the wind above the city, seafoam silk against glass and steel.",
+    featured: false,
+    layout: "wide",
+    hero: {
+      type: "image",
+      aspect: "3:4",
+      alt: "A veil catching the wind above the city, seafoam silk against glass and steel.",
+      src: "/media/work/teal-veil-1/hero.jpg",
+      placeholderTone: 1,
+    },
+    gallery: [],
+    story: ["A veil catching the wind above the city, seafoam silk against glass and steel."],
+  },
+
+  {
+    slug: "teal-veil-2",
+    title: "Held Still",
+    category: "Wedding",
+    date: "2026-09-13",
+    services: ["Wedding"],
+    excerpt: "A quieter frame from the same seafoam moment, hands settled, eyes elsewhere.",
+    featured: false,
+    layout: "wide",
+    hero: {
+      type: "image",
+      aspect: "3:4",
+      alt: "A quieter frame from the same seafoam moment, hands settled, eyes elsewhere.",
+      src: "/media/work/teal-veil-2/hero.jpg",
+      placeholderTone: 1,
+    },
+    gallery: [],
+    story: ["A quieter frame from the same seafoam moment, hands settled, eyes elsewhere."],
+  },
+
+  {
+    slug: "plum-iyawo",
+    title: "Iyawo in Plum",
+    category: "Wedding",
+    date: "2026-09-13",
+    services: ["Wedding"],
+    excerpt: "Deep plum beading and a hand-painted fan, the bride's name stitched into the reveal.",
+    featured: false,
+    layout: "wide",
+    hero: {
+      type: "image",
+      aspect: "3:4",
+      alt: "Deep plum beading and a hand-painted fan, the bride's name stitched into the reveal.",
+      src: "/media/work/plum-iyawo/hero.jpg",
+      placeholderTone: 1,
+    },
+    gallery: [],
+    story: ["Deep plum beading and a hand-painted fan, the bride's name stitched into the reveal."],
+  },
+
+  {
+    slug: "silver-gele-1",
+    title: "Holographic Hour",
+    category: "Wedding",
+    date: "2026-09-13",
+    services: ["Wedding"],
+    excerpt: "Silver gele catching every light in the room, profile turned toward the glow.",
+    featured: false,
+    layout: "wide",
+    hero: {
+      type: "image",
+      aspect: "3:4",
+      alt: "Silver gele catching every light in the room, profile turned toward the glow.",
+      src: "/media/work/silver-gele-1/hero.jpg",
+      placeholderTone: 1,
+    },
+    gallery: [],
+    story: ["Silver gele catching every light in the room, profile turned toward the glow."],
+  },
+
+  {
+    slug: "silver-gele-2",
+    title: "Ice and Diamonds",
+    category: "Wedding",
+    date: "2026-09-13",
+    services: ["Wedding"],
+    excerpt: "The same silver hour, faced forward, ice-blue beading meeting the camera.",
+    featured: false,
+    layout: "wide",
+    hero: {
+      type: "image",
+      aspect: "3:4",
+      alt: "The same silver hour, faced forward, ice-blue beading meeting the camera.",
+      src: "/media/work/silver-gele-2/hero.jpg",
+      placeholderTone: 1,
+    },
+    gallery: [],
+    story: ["The same silver hour, faced forward, ice-blue beading meeting the camera."],
+  },
+
+  {
+    slug: "mint-maroon-1",
+    title: "Peacocks and Pearls",
+    category: "Asoebi Moments",
+    date: "2026-09-13",
+    services: ["Asoebi Moments"],
+    excerpt: "A hand-painted fan and a mint-and-maroon aso-ebi, caught mid-laugh.",
+    featured: false,
+    layout: "wide",
+    hero: {
+      type: "image",
+      aspect: "3:4",
+      alt: "A hand-painted fan and a mint-and-maroon aso-ebi, caught mid-laugh.",
+      src: "/media/work/mint-maroon-1/hero.jpg",
+      placeholderTone: 1,
+    },
+    gallery: [],
+    story: ["A hand-painted fan and a mint-and-maroon aso-ebi, caught mid-laugh."],
+  },
+
+  {
+    slug: "mint-maroon-2",
+    title: "The Reveal",
+    category: "Asoebi Moments",
+    date: "2026-09-13",
+    services: ["Asoebi Moments"],
+    excerpt: "Same aso-ebi, a different room, a gift extended across a reception table.",
+    featured: false,
+    layout: "wide",
+    hero: {
+      type: "image",
+      aspect: "3:4",
+      alt: "Same aso-ebi, a different room, a gift extended across a reception table.",
+      src: "/media/work/mint-maroon-2/hero.jpg",
+      placeholderTone: 1,
+    },
+    gallery: [],
+    story: ["Same aso-ebi, a different room, a gift extended across a reception table."],
+  },
+
+  {
+    slug: "mint-maroon-3",
+    title: "Garden Wall",
+    category: "Asoebi Moments",
+    date: "2026-09-13",
+    services: ["Asoebi Moments"],
+    excerpt: "The mint-and-maroon pattern framed against brick and green, close and unhurried.",
+    featured: false,
+    layout: "wide",
+    hero: {
+      type: "image",
+      aspect: "3:4",
+      alt: "The mint-and-maroon pattern framed against brick and green, close and unhurried.",
+      src: "/media/work/mint-maroon-3/hero.jpg",
+      placeholderTone: 1,
+    },
+    gallery: [],
+    story: ["The mint-and-maroon pattern framed against brick and green, close and unhurried."],
+  },
+
+  {
+    slug: "rose-and-marble",
+    title: "Rose & Marble",
+    category: "Wedding",
+    date: "2026-05-30",
+    services: ["Wedding"],
+    excerpt: "REPLACE with a one-line summary.",
+    featured: true,
+    layout: "feature",
+    hero: {
+      type: "video",
+      aspect: "16:9",
+      alt: "REPLACE — describe this shot for screen readers",
+      src: "/media/work/piece-16/hero.mp4",
+      placeholderTone: 1,
+    },
+    gallery: [],
+    story: ["REPLACE with the first story paragraph."],
+  },
+
+  {
+    slug: "piece-10",
+    title: "The Quiet Frame",
+    category: "Wedding", // REPLACE
+    date: "2026-09-12", // REPLACE with the real date
+    services: ["Wedding"], // REPLACE
+    excerpt: "REPLACE with a one-line summary.",
+    featured: true,
+    layout: "wide",
+    hero: {
+      type: "image",
+      aspect: "16:9",
+      alt: "REPLACE — describe this shot for screen readers",
+      src: "/media/work/piece-10/hero.jpg",
+      placeholderTone: 1,
+    },
+    gallery: [],
+    story: ["REPLACE with the first story paragraph."],
+  },
+
+  {
     slug: "emerald-and-gold",
     title: "Emerald & Gold",
     category: "Bridal Prep",
     date: "2026-06-14",
     services: ["Bridal Prep"],
     excerpt: "A gele tied in under an hour, and every minute of it worth keeping.",
-    story: [
-      "The pins go in one at a time, then the folding starts, then the small adjustments nobody but the stylist notices. Most of that never makes it into anyone's memory of the day.",
-      "This one is about that hour: the part before anyone else arrives.",
-    ],
+    featured: false,
+    layout: "feature",
     hero: {
       type: "video",
       aspect: "16:9",
@@ -55,16 +253,17 @@ export const projects: Project[] = [
     },
     gallery: [],
     story: [
-      "REPLACE with the first story paragraph.",
+      "The pins go in one at a time, then the folding starts, then the small adjustments nobody but the stylist notices. Most of that never makes it into anyone's memory of the day.",
+      "This one is about that hour: the part before anyone else arrives.",
     ],
   },
 
   {
     slug: "piece-11",
-    title: "Piece 11", // REPLACE with the real title
-    category: "Wedding", // REPLACE — Wedding | Bridal Prep | Asoebi Moments | Social Content
+    title: "Coral and Company",
+    category: "Asoebi Moments", // REPLACE — Wedding | Bridal Prep | Asoebi Moments | Social Content
     date: "2026-09-12", // REPLACE with the real date
-    services: ["Wedding"], // REPLACE
+    services: ["Asoebi Moments"], // REPLACE
     excerpt: "REPLACE with a one-line summary.",
     featured: true,
     layout: "feature",
@@ -83,10 +282,10 @@ export const projects: Project[] = [
 
   {
     slug: "piece-12",
-    title: "Piece 12", // REPLACE with the real title
-    category: "Wedding", // REPLACE — Wedding | Bridal Prep | Asoebi Moments | Social Content
+    title: "The Matching Hour",
+    category: "Asoebi Moments", // REPLACE — Wedding | Bridal Prep | Asoebi Moments | Social Content
     date: "2026-09-12", // REPLACE with the real date
-    services: ["Wedding"], // REPLACE
+    services: ["Asoebi Moments"], // REPLACE
     excerpt: "REPLACE with a one-line summary.",
     featured: true,
     layout: "feature",
@@ -105,12 +304,12 @@ export const projects: Project[] = [
 
   {
     slug: "piece-13",
-    title: "Piece 13", // REPLACE with the real title
+    title: "Where the Light Falls",
     category: "Wedding", // REPLACE — Wedding | Bridal Prep | Asoebi Moments | Social Content
     date: "2026-09-12", // REPLACE with the real date
     services: ["Wedding"], // REPLACE
     excerpt: "REPLACE with a one-line summary.",
-    featured: true,
+    featured: false,
     layout: "wide",
     hero: {
       type: "video",
@@ -127,12 +326,12 @@ export const projects: Project[] = [
 
   {
     slug: "piece-14",
-    title: "Piece 14", // REPLACE with the real title
+    title: "Ivory and Lace",
     category: "Wedding", // REPLACE — Wedding | Bridal Prep | Asoebi Moments | Social Content
     date: "2026-09-12", // REPLACE with the real date
     services: ["Wedding"], // REPLACE
     excerpt: "REPLACE with a one-line summary.",
-    featured: true,
+    featured: false,
     layout: "wide",
     hero: {
       type: "video",
@@ -149,7 +348,7 @@ export const projects: Project[] = [
 
   {
     slug: "piece-8",
-    title: "Piece 8", // REPLACE with the real title
+    title: "Details Before Dark",
     category: "Wedding", // REPLACE — Wedding | Bridal Prep | Asoebi Moments | Social Content
     date: "2026-09-12", // REPLACE with the real date
     services: ["Wedding"], // REPLACE
@@ -171,7 +370,7 @@ export const projects: Project[] = [
 
   {
     slug: "piece-9",
-    title: "Piece 9", // REPLACE with the real title
+    title: "Threaded in Gold",
     category: "Wedding", // REPLACE — Wedding | Bridal Prep | Asoebi Moments | Social Content
     date: "2026-09-12", // REPLACE with the real date
     services: ["Wedding"], // REPLACE
@@ -192,12 +391,12 @@ export const projects: Project[] = [
   },
   {
     slug: "piece-1",
-    title: "Piece 1", // REPLACE with the real title
+    title: "The First Look",
     category: "Wedding", // REPLACE — Wedding | Bridal Prep | Asoebi Moments | Social Content
     date: "2026-09-12", // REPLACE with the real date
     services: ["Wedding"], // REPLACE
     excerpt: "REPLACE with a one-line summary.",
-    featured: false,
+    featured: true,
     layout: "wide",
     hero: {
       type: "video",
@@ -214,12 +413,12 @@ export const projects: Project[] = [
 
   {
     slug: "piece-2",
-    title: "Piece 2", // REPLACE with the real title
-    category: "Wedding", // REPLACE — Wedding | Bridal Prep | Asoebi Moments | Social Content
+    title: "Pins and Patience",
+    category: "Bridal Prep", // REPLACE — Wedding | Bridal Prep | Asoebi Moments | Social Content
     date: "2026-09-12", // REPLACE with the real date
-    services: ["Wedding"], // REPLACE
+    services: ["Bridal Prep"], // REPLACE
     excerpt: "REPLACE with a one-line summary.",
-    featured: false,
+    featured: true,
     layout: "wide",
     hero: {
       type: "video",
@@ -236,12 +435,12 @@ export const projects: Project[] = [
 
   {
     slug: "piece-3",
-    title: "Piece 3", // REPLACE with the real title
-    category: "Wedding", // REPLACE — Wedding | Bridal Prep | Asoebi Moments | Social Content
+    title: "The Final Fitting",
+    category: "Bridal Prep", // REPLACE — Wedding | Bridal Prep | Asoebi Moments | Social Content
     date: "2026-09-12", // REPLACE with the real date
-    services: ["Wedding"], // REPLACE
+    services: ["Bridal Prep"], // REPLACE
     excerpt: "REPLACE with a one-line summary.",
-    featured: false,
+    featured: true,
     layout: "wide",
     hero: {
       type: "video",
@@ -258,12 +457,12 @@ export const projects: Project[] = [
 
   {
     slug: "piece-4",
-    title: "Piece 4", // REPLACE with the real title
-    category: "Wedding", // REPLACE — Wedding | Bridal Prep | Asoebi Moments | Social Content
+    title: "Mirror Moments",
+    category: "Bridal Prep", // REPLACE — Wedding | Bridal Prep | Asoebi Moments | Social Content
     date: "2026-09-12", // REPLACE with the real date
-    services: ["Wedding"], // REPLACE
+    services: ["Bridal Prep"], // REPLACE
     excerpt: "REPLACE with a one-line summary.",
-    featured: false,
+    featured: true,
     layout: "wide",
     hero: {
       type: "video",
@@ -280,12 +479,12 @@ export const projects: Project[] = [
 
   {
     slug: "piece-5",
-    title: "Piece 5", // REPLACE with the real title
+    title: "Golden Hour Vows",
     category: "Wedding", // REPLACE — Wedding | Bridal Prep | Asoebi Moments | Social Content
     date: "2026-09-12", // REPLACE with the real date
     services: ["Wedding"], // REPLACE
     excerpt: "REPLACE with a one-line summary.",
-    featured: false,
+    featured: true,
     layout: "wide",
     hero: {
       type: "video",
@@ -302,12 +501,12 @@ export const projects: Project[] = [
 
   {
     slug: "piece-6",
-    title: "Piece 6", // REPLACE with the real title
-    category: "Wedding", // REPLACE — Wedding | Bridal Prep | Asoebi Moments | Social Content
+    title: "Behind the Scenes",
+    category: "Social Content", // REPLACE — Wedding | Bridal Prep | Asoebi Moments | Social Content
     date: "2026-09-12", // REPLACE with the real date
-    services: ["Wedding"], // REPLACE
+    services: ["Social Content"], // REPLACE
     excerpt: "REPLACE with a one-line summary.",
-    featured: false,
+    featured: true,
     layout: "wide",
     hero: {
       type: "video",
@@ -324,12 +523,12 @@ export const projects: Project[] = [
 
   {
     slug: "piece-7",
-    title: "Piece 7", // REPLACE with the real title
+    title: "The Long Walk",
     category: "Wedding", // REPLACE — Wedding | Bridal Prep | Asoebi Moments | Social Content
     date: "2026-09-12", // REPLACE with the real date
     services: ["Wedding"], // REPLACE
     excerpt: "REPLACE with a one-line summary.",
-    featured: false,
+    featured: true,
     layout: "wide",
     hero: {
       type: "video",
@@ -346,12 +545,12 @@ export const projects: Project[] = [
 
   {
     slug: "piece-15",
-    title: "Piece 15", // REPLACE with the real title
+    title: "The Toast",
     category: "Wedding", // REPLACE — Wedding | Bridal Prep | Asoebi Moments | Social Content
     date: "2026-09-12", // REPLACE with the real date
     services: ["Wedding"], // REPLACE
     excerpt: "REPLACE with a one-line summary.",
-    featured: false,
+    featured: true,
     layout: "wide",
     hero: {
       type: "video",
@@ -368,10 +567,10 @@ export const projects: Project[] = [
 
   {
     slug: "piece-16",
-    title: "Piece 16", // REPLACE with the real title
-    category: "Wedding", // REPLACE — Wedding | Bridal Prep | Asoebi Moments | Social Content
+    title: "Powder and Silk",
+    category: "Bridal Prep", // REPLACE — Wedding | Bridal Prep | Asoebi Moments | Social Content
     date: "2026-09-12", // REPLACE with the real date
-    services: ["Wedding"], // REPLACE
+    services: ["Bridal Prep"], // REPLACE
     excerpt: "REPLACE with a one-line summary.",
     featured: false,
     layout: "wide",
@@ -390,12 +589,12 @@ export const projects: Project[] = [
 
   {
     slug: "piece-17",
-    title: "Piece 17", // REPLACE with the real title
-    category: "Wedding", // REPLACE — Wedding | Bridal Prep | Asoebi Moments | Social Content
+    title: "The Quiet Before",
+    category: "Bridal Prep", // REPLACE — Wedding | Bridal Prep | Asoebi Moments | Social Content
     date: "2026-09-12", // REPLACE with the real date
-    services: ["Wedding"], // REPLACE
+    services: ["Bridal Prep"], // REPLACE
     excerpt: "REPLACE with a one-line summary.",
-    featured: false,
+    featured: true,
     layout: "wide",
     hero: {
       type: "video",
@@ -412,12 +611,12 @@ export const projects: Project[] = [
 
   {
     slug: "piece-18",
-    title: "Piece 18", // REPLACE with the real title
+    title: "Last Dance",
     category: "Wedding", // REPLACE — Wedding | Bridal Prep | Asoebi Moments | Social Content
     date: "2026-09-12", // REPLACE with the real date
     services: ["Wedding"], // REPLACE
     excerpt: "REPLACE with a one-line summary.",
-    featured: false,
+    featured: true,
     layout: "wide",
     hero: {
       type: "video",
@@ -434,12 +633,12 @@ export const projects: Project[] = [
 
   {
     slug: "piece-19",
-    title: "Piece 19", // REPLACE with the real title
-    category: "Wedding", // REPLACE — Wedding | Bridal Prep | Asoebi Moments | Social Content
+    title: "Laced and Ready",
+    category: "Bridal Prep", // REPLACE — Wedding | Bridal Prep | Asoebi Moments | Social Content
     date: "2026-09-12", // REPLACE with the real date
-    services: ["Wedding"], // REPLACE
+    services: ["Bridal Prep"], // REPLACE
     excerpt: "REPLACE with a one-line summary.",
-    featured: false,
+    featured: true,
     layout: "wide",
     hero: {
       type: "video",
@@ -456,12 +655,12 @@ export const projects: Project[] = [
 
   {
     slug: "piece-20",
-    title: "Piece 20", // REPLACE with the real title
-    category: "Wedding", // REPLACE — Wedding | Bridal Prep | Asoebi Moments | Social Content
+    title: "Veil in Hand",
+    category: "Bridal Prep", // REPLACE — Wedding | Bridal Prep | Asoebi Moments | Social Content
     date: "2026-09-12", // REPLACE with the real date
-    services: ["Wedding"], // REPLACE
+    services: ["Bridal Prep"], // REPLACE
     excerpt: "REPLACE with a one-line summary.",
-    featured: false,
+    featured: true,
     layout: "wide",
     hero: {
       type: "video",
@@ -478,12 +677,12 @@ export const projects: Project[] = [
 
   {
     slug: "piece-21",
-    title: "Piece 21", // REPLACE with the real title
-    category: "Wedding", // REPLACE — Wedding | Bridal Prep | Asoebi Moments | Social Content
+    title: "The Last Touch",
+    category: "Bridal Prep", // REPLACE — Wedding | Bridal Prep | Asoebi Moments | Social Content
     date: "2026-09-12", // REPLACE with the real date
-    services: ["Wedding"], // REPLACE
+    services: ["Bridal Prep"], // REPLACE
     excerpt: "REPLACE with a one-line summary.",
-    featured: false,
+    featured: true,
     layout: "wide",
     hero: {
       type: "video",
@@ -498,159 +697,12 @@ export const projects: Project[] = [
     ],
   },
 
-  {
-    slug: "piece-22",
-    title: "Piece 22", // REPLACE with the real title
-    category: "Wedding", // REPLACE — Wedding | Bridal Prep | Asoebi Moments | Social Content
-    date: "2026-09-12", // REPLACE with the real date
-    services: ["Wedding"], // REPLACE
-    excerpt: "REPLACE with a one-line summary.",
-    featured: false,
-    layout: "wide",
-    hero: {
-      type: "image",
-      aspect: "16:9",
-      alt: "REPLACE — describe this shot for screen readers",
-      src: "/media/work/piece-22/hero.jpg",
-      placeholderTone: 1,
-    },
-    gallery: [],
-    story: [
-      "REPLACE with the first story paragraph.",
-    ],
-  },
 
-  {
-    slug: "piece-23",
-    title: "Piece 23", // REPLACE with the real title
-    category: "Wedding", // REPLACE — Wedding | Bridal Prep | Asoebi Moments | Social Content
-    date: "2026-09-12", // REPLACE with the real date
-    services: ["Wedding"], // REPLACE
-    excerpt: "REPLACE with a one-line summary.",
-    featured: false,
-    layout: "wide",
-    hero: {
-      type: "image",
-      aspect: "16:9",
-      alt: "REPLACE — describe this shot for screen readers",
-      src: "/media/work/piece-23/hero.jpg",
-      placeholderTone: 1,
-    },
-    gallery: [],
-    story: [
-      "REPLACE with the first story paragraph.",
-    ],
-  },
 
-  {
-    slug: "piece-24",
-    title: "Piece 24", // REPLACE with the real title
-    category: "Wedding", // REPLACE — Wedding | Bridal Prep | Asoebi Moments | Social Content
-    date: "2026-09-12", // REPLACE with the real date
-    services: ["Wedding"], // REPLACE
-    excerpt: "REPLACE with a one-line summary.",
-    featured: false,
-    layout: "wide",
-    hero: {
-      type: "image",
-      aspect: "16:9",
-      alt: "REPLACE — describe this shot for screen readers",
-      src: "/media/work/piece-24/hero.jpg",
-      placeholderTone: 1,
-    },
-    gallery: [],
-    story: [
-      "REPLACE with the first story paragraph.",
-    ],
-  },
 
-  {
-    slug: "piece-25",
-    title: "Piece 25", // REPLACE with the real title
-    category: "Wedding", // REPLACE — Wedding | Bridal Prep | Asoebi Moments | Social Content
-    date: "2026-09-12", // REPLACE with the real date
-    services: ["Wedding"], // REPLACE
-    excerpt: "REPLACE with a one-line summary.",
-    featured: false,
-    layout: "wide",
-    hero: {
-      type: "video",
-      aspect: "16:9",
-      alt: "REPLACE — describe this shot for screen readers",
-      src: "/media/work/piece-25/hero.mp4",
-      placeholderTone: 1,
-    },
-    gallery: [],
-    story: [
-      "REPLACE with the first story paragraph.",
-    ],
-  },
 
-  {
-    slug: "piece-26",
-    title: "Piece 26", // REPLACE with the real title
-    category: "Wedding", // REPLACE — Wedding | Bridal Prep | Asoebi Moments | Social Content
-    date: "2026-09-12", // REPLACE with the real date
-    services: ["Wedding"], // REPLACE
-    excerpt: "REPLACE with a one-line summary.",
-    featured: false,
-    layout: "wide",
-    hero: {
-      type: "video",
-      aspect: "16:9",
-      alt: "REPLACE — describe this shot for screen readers",
-      src: "/media/work/piece-26/hero.mp4",
-      placeholderTone: 1,
-    },
-    gallery: [],
-    story: [
-      "REPLACE with the first story paragraph.",
-    ],
-  },
 
-  {
-    slug: "piece-27",
-    title: "Piece 27", // REPLACE with the real title
-    category: "Wedding", // REPLACE — Wedding | Bridal Prep | Asoebi Moments | Social Content
-    date: "2026-09-12", // REPLACE with the real date
-    services: ["Wedding"], // REPLACE
-    excerpt: "REPLACE with a one-line summary.",
-    featured: false,
-    layout: "wide",
-    hero: {
-      type: "video",
-      aspect: "16:9",
-      alt: "REPLACE — describe this shot for screen readers",
-      src: "/media/work/piece-27/hero.mp4",
-      placeholderTone: 1,
-    },
-    gallery: [],
-    story: [
-      "REPLACE with the first story paragraph.",
-    ],
-  },
 
-  {
-    slug: "piece-28",
-    title: "Piece 28", // REPLACE with the real title
-    category: "Wedding", // REPLACE — Wedding | Bridal Prep | Asoebi Moments | Social Content
-    date: "2026-09-12", // REPLACE with the real date
-    services: ["Wedding"], // REPLACE
-    excerpt: "REPLACE with a one-line summary.",
-    featured: false,
-    layout: "wide",
-    hero: {
-      type: "video",
-      aspect: "16:9",
-      alt: "REPLACE — describe this shot for screen readers",
-      src: "/media/work/piece-28/hero.mp4",
-      placeholderTone: 1,
-    },
-    gallery: [],
-    story: [
-      "REPLACE with the first story paragraph.",
-    ],
-  },
 {
   slug: "the-ivory-hour",
   title: "The Ivory Hour",
@@ -658,7 +710,7 @@ export const projects: Project[] = [
   date: "2026-04-25",
   services: ["Wedding"],
   excerpt: "REPLACE with a one-line summary.",
-  featured: true,
+  featured: false,
   layout: "feature",
   hero: {
       type: "video",
