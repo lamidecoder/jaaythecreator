@@ -1,4 +1,21 @@
-import { Reveal } from "./reveal";
+#!/usr/bin/env node
+/**
+ * about-page-new-heading.js
+ *
+ * New heading: "Close enough to catch it. Quiet enough to disappear."
+ * Ties directly to videography this time, and echoes "staying close,
+ * staying quiet" from the body copy right below it, so the heading
+ * and the text actually agree with each other now.
+ *
+ * Run once from your project root:  node about-page-new-heading.js
+ */
+
+const fs = require("fs");
+const path = require("path");
+
+const target = path.join(__dirname, "components", "about-section.tsx");
+
+const content = `import { Reveal } from "./reveal";
 
 export function AboutSection() {
   return (
@@ -68,3 +85,7 @@ export function AboutSection() {
     </div>
   );
 }
+`;
+
+fs.writeFileSync(target, content);
+console.log("Updated components/about-section.tsx — new heading in place.");
