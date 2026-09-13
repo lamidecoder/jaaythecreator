@@ -49,6 +49,7 @@ export function ServicesSection({ headingLevel = "h2" }: { headingLevel?: "h1" |
           <div className="sm:col-span-5">
             <motion.div key={current.slug} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
               <MediaFrame
+                sizes="(min-width: 640px) 480px, 100vw"
                 media={{
                   type: "image",
                   aspect: "4:3",

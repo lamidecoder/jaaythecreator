@@ -8,6 +8,7 @@ export function AboutTeaser() {
       <div className="mx-auto grid max-w-6xl gap-12 sm:grid-cols-12 sm:items-center sm:gap-8">
         <div className="sm:col-span-5">
           <MediaFrame
+            sizes="(min-width: 640px) 480px, 100vw"
             media={{
               type: "image",
               aspect: "4:5",

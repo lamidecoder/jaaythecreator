@@ -60,6 +60,8 @@ export function Footer() {
         <div className="mt-14 flex flex-col gap-4 text-xs text-paper/40 sm:flex-row sm:items-center sm:justify-between">
           <p>
             © {new Date().getFullYear()} {site.name}. All rights reserved.
+            <span className="mx-2 text-paper/20">·</span>
+            Built by NexusHouseUK
           </p>
           <div className="flex gap-6">
             {site.nav.map((item) => (
