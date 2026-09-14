@@ -8,7 +8,7 @@ import { motion, useReducedMotion } from "motion/react";
 import { prefersReducedMotion } from "@/lib/motion";
 import { placeholderTone } from "@/lib/placeholder-tones";
 import { getProject } from "@/lib/projects";
-import { videoMimeType } from "./media-frame";
+import { videoMimeType, videoPosterPath } from "./media-frame";
 import { site } from "@/lib/site";
 
 if (typeof window !== "undefined") {
@@ -63,6 +63,7 @@ export function Hero() {
               loop
               playsInline
               preload="auto"
+              poster={videoPosterPath(heroSrc)}
               className="absolute inset-0 h-full w-full object-cover"
               animate={reduceMotion ? undefined : { scale: [1, 1.05, 1] }}
               transition={reduceMotion ? undefined : { duration: 22, repeat: Infinity, ease: "easeInOut" }}

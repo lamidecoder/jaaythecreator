@@ -191,10 +191,23 @@ for (const file of files) {
     if (type === "video" && FFMPEG_AVAILABLE) {
       try {
         execSync(
-          `ffmpeg -y -i "${path.join(INBOX, file)}" -c:v libx264 -preset fast -crf 23 -pix_fmt yuv420p -c:a aac -b:a 128k -movflags +faststart "${destPath}"`,
+          `ffmpeg -y -i "${path.join(INBOX, file)}" -c:v libx264 -preset fast -crf 26 -pix_fmt yuv420p -vf "scale='min(1920,iw)':'min(1920,ih)':force_original_aspect_ratio=decrease:force_divisible_by=2" -c:a aac -b:a 128k -movflags +faststart "${destPath}"`,
           { stdio: "ignore" },
         );
         converted = true;
+
+        // Poster frame: a still image shown instantly while the actual
+        // video data is still loading, so the tile never shows a blank
+        // gap. Taken a half-second in, since frame 0 is sometimes a
+        // black flash on phone-recorded clips.
+        const posterPath = path.join(destDir, "poster.jpg");
+        try {
+          execSync(`ffmpeg -y -ss 00:00:00.5 -i "${destPath}" -frames:v 1 -q:v 3 "${posterPath}"`, {
+            stdio: "ignore",
+          });
+        } catch {
+          // Poster is a nice-to-have, not worth failing the whole entry over.
+        }
       } catch {
         if (fs.existsSync(destPath)) fs.unlinkSync(destPath);
         console.log(`  (ffmpeg couldn't convert "${file}", copying the original file instead)`);

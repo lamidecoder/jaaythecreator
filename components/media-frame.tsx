@@ -15,6 +15,18 @@ export function videoMimeType(src: string) {
   return "video/mp4";
 }
 
+/**
+ * Poster images sit alongside the video as poster.jpg (see
+ * organize-media-v2.js), so this is always derivable from the video's
+ * own path rather than needing its own data field. Videos processed
+ * before poster generation existed won't have one, the browser just
+ * quietly ignores a missing poster and falls back to its normal
+ * behavior, so this is safe either way.
+ */
+export function videoPosterPath(src: string) {
+  return src.replace(/\/[^/]+$/, "/poster.jpg");
+}
+
 type MediaFrameProps = {
   media: MediaAsset;
   className?: string;
@@ -85,7 +97,7 @@ export function MediaFrame({
             loop
             playsInline
             preload="metadata"
-            poster={media.poster}
+            poster={media.poster ?? videoPosterPath(media.src)}
             aria-label={media.alt}
             className="absolute inset-0 h-full w-full object-contain"
           >

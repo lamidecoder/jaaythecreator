@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import type { Project } from "@/lib/projects";
-import { videoMimeType } from "./media-frame";
+import { videoMimeType, videoPosterPath } from "./media-frame";
 import { cn } from "@/lib/utils";
 
 export function MagazineCard({
@@ -23,15 +23,9 @@ export function MagazineCard({
   useEffect(() => {
     const node = containerRef.current;
     if (!node) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setInView(true);
-          observer.disconnect();
-        }
-      },
-      { rootMargin: "400px" },
-    );
+    const observer = new IntersectionObserver(([entry]) => setInView(entry.isIntersecting), {
+      rootMargin: "400px",
+    });
     observer.observe(node);
     return () => observer.disconnect();
   }, []);
@@ -51,6 +45,7 @@ export function MagazineCard({
             loop
             playsInline
             preload="metadata"
+            poster={videoPosterPath(project.hero.src)}
             className={cn(
               "absolute inset-0 h-full w-full object-cover transition-transform duration-[900ms] ease-cinematic group-hover:scale-[1.03]",
               objectPosition,
