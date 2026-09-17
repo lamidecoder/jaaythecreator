@@ -9,6 +9,7 @@ import { prefersReducedMotion } from "@/lib/motion";
 import { placeholderTone } from "@/lib/placeholder-tones";
 import { getProject } from "@/lib/projects";
 import { videoMimeType, videoPosterPath } from "./media-frame";
+import { InstagramIcon, WhatsAppIcon } from "./social-icons";
 import { site } from "@/lib/site";
 
 if (typeof window !== "undefined") {
@@ -96,6 +97,28 @@ export function Hero() {
           >
             {"Weddings, bridal prep, and asoebi moments. UK-based, available worldwide."}
           </p>
+        </div>
+
+        <div className="absolute right-6 top-1/2 z-10 flex -translate-y-1/2 flex-col items-center gap-5 sm:right-10">
+          <a
+            href={site.instagram.url}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Instagram"
+            className="text-paper/70 transition-colors hover:text-paper"
+          >
+            <InstagramIcon />
+          </a>
+          <span className="h-6 w-px bg-paper/25" aria-hidden="true" />
+          <a
+            href={site.whatsapp}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="WhatsApp"
+            className="text-paper/70 transition-colors hover:text-paper"
+          >
+            <WhatsAppIcon />
+          </a>
         </div>
 
         <span

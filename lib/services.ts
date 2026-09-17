@@ -20,9 +20,9 @@ export const services: Service[] = [
   {
     slug: "bridal-prep",
     name: "Bridal Prep",
-    description: "The getting-ready hours, styled and kept.",
+    description: "The getting-ready hours, gele and all, styled and kept.",
     detail:
-      "The pins, the folding, the last adjustments before anyone steps back to look. Usually the most candid part of the whole day, even though it is the most styled.",
+      "The pins, the folding, the gele tied just right, the last adjustments before anyone steps back to look. Usually the most candid part of the whole day, even though it is the most styled.",
     placeholderTone: 4,
     src: "/media/work/silver-gele-1/hero.jpg",
   },

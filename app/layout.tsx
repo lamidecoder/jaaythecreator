@@ -14,7 +14,18 @@ export const metadata: Metadata = {
     template: `%s — ${site.name}`,
   },
   description: site.description,
-  keywords: ["wedding videographer London", "wedding photographer UK", "wedding films", "documentary wedding photography"],
+  keywords: [
+    "wedding videographer London",
+    "wedding photographer UK",
+    "wedding films",
+    "documentary wedding photography",
+    "gele styling photography",
+    "gele artist London",
+    "asoebi photography",
+    "bridal prep videographer",
+    "Nigerian wedding videographer UK",
+    "aso ebi photographer",
+  ],
   openGraph: {
     title: site.title,
     description: site.description,
@@ -40,6 +51,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     address: { "@type": "PostalAddress", addressLocality: "London", addressCountry: "GB" },
     sameAs: [site.instagram.url],
     description: site.description,
+    knowsAbout: ["Wedding photography", "Wedding videography", "Gele styling", "Asoebi photography", "Bridal prep"],
   };
 
   return (

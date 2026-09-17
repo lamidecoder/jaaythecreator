@@ -8,9 +8,9 @@
 export const site = {
   name: "Jaaythecreator",
   legalName: "Jaaythecreator",
-  title: "Jaaythecreator — Wedding films & photography",
+  title: "Jaaythecreator — Wedding, Bridal Prep & Asoebi Films",
   description:
-    "Wedding films and photography from Jaaythecreator, based in London and available wherever your story takes place.",
+    "Wedding films and photography from Jaaythecreator: weddings, bridal prep, gele styling moments, and asoebi coverage, based in London and available wherever your story takes place.",
 
   // REPLACE: the live domain, once one is chosen. Used for metadata,
   // sitemap.xml and canonical URLs.
