@@ -6,6 +6,7 @@ import type { MediaAsset } from "@/lib/projects";
 import { placeholderTone } from "@/lib/placeholder-tones";
 import { prefersReducedMotion } from "@/lib/motion";
 import { cn } from "@/lib/utils";
+import { useTrimmedLoop } from "@/lib/use-trimmed-loop";
 
 export function videoMimeType(src: string) {
   const ext = src.split(".").pop()?.toLowerCase();
@@ -71,6 +72,7 @@ export function MediaFrame({
   fit = "cover",
 }: MediaFrameProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
+  useTrimmedLoop(videoRef);
 
   useEffect(() => {
     // Safety net only: if the visitor has reduced motion turned on, stop
@@ -94,7 +96,6 @@ export function MediaFrame({
             ref={videoRef}
             autoPlay
             muted
-            loop
             playsInline
             preload="metadata"
             poster={media.poster ?? videoPosterPath(media.src)}

@@ -6,6 +6,8 @@ import { CursorProvider } from "./cursor";
 import { TransitionProvider } from "./transition";
 import { GrainOverlay } from "./grain-overlay";
 import { IntroLoader } from "./intro-loader";
+import { MediaProtection } from "./media-protection";
+import { BackToTop } from "./back-to-top";
 
 export function Providers({ children }: { children: ReactNode }) {
   return (
@@ -15,6 +17,8 @@ export function Providers({ children }: { children: ReactNode }) {
           {children}
           <GrainOverlay />
           <IntroLoader />
+          <MediaProtection />
+          <BackToTop />
         </TransitionProvider>
       </CursorProvider>
     </SmoothScroll>

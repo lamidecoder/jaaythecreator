@@ -9,7 +9,8 @@ import { prefersReducedMotion } from "@/lib/motion";
 import { placeholderTone } from "@/lib/placeholder-tones";
 import { getProject } from "@/lib/projects";
 import { videoMimeType, videoPosterPath } from "./media-frame";
-import { InstagramIcon, WhatsAppIcon } from "./social-icons";
+import { useTrimmedLoop } from "@/lib/use-trimmed-loop";
+import { InstagramIcon, TikTokIcon } from "./social-icons";
 import { site } from "@/lib/site";
 
 if (typeof window !== "undefined") {
@@ -28,10 +29,12 @@ export function Hero() {
   const headlineRef = useRef<HTMLHeadingElement>(null);
   const subRef = useRef<HTMLParagraphElement>(null);
   const cueRef = useRef<HTMLSpanElement>(null);
+  const heroVideoRef = useRef<HTMLVideoElement>(null);
   const reduceMotion = useReducedMotion();
 
   const heroProject = getProject(site.heroProjectSlug);
   const heroSrc = heroProject?.hero.src;
+  useTrimmedLoop(heroVideoRef, 3, heroSrc);
 
   useGSAP(
     () => {
@@ -59,9 +62,9 @@ export function Hero() {
         <div ref={frameRef} className="absolute inset-0 origin-center overflow-hidden">
           {heroSrc ? (
             <motion.video
+              ref={heroVideoRef}
               autoPlay
               muted
-              loop
               playsInline
               preload="auto"
               poster={videoPosterPath(heroSrc)}
@@ -111,13 +114,13 @@ export function Hero() {
           </a>
           <span className="h-6 w-px bg-paper/25" aria-hidden="true" />
           <a
-            href={site.whatsapp}
+            href={site.tiktok.url}
             target="_blank"
             rel="noreferrer"
-            aria-label="WhatsApp"
+            aria-label="TikTok"
             className="text-paper/70 transition-colors hover:text-paper"
           >
-            <WhatsAppIcon />
+            <TikTokIcon />
           </a>
         </div>
 

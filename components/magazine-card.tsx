@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import type { Project } from "@/lib/projects";
 import { videoMimeType, videoPosterPath } from "./media-frame";
+import { useTrimmedLoop } from "@/lib/use-trimmed-loop";
 import { cn } from "@/lib/utils";
 
 export function MagazineCard({
@@ -19,6 +20,8 @@ export function MagazineCard({
   const [hovered, setHovered] = useState(false);
   const [inView, setInView] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  useTrimmedLoop(videoRef, 3, inView);
 
   useEffect(() => {
     const node = containerRef.current;
@@ -40,9 +43,9 @@ export function MagazineCard({
       {project.hero.src && inView ? (
         project.hero.type === "video" ? (
           <video
+            ref={videoRef}
             autoPlay
             muted
-            loop
             playsInline
             preload="metadata"
             poster={videoPosterPath(project.hero.src)}

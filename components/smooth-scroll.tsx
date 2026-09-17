@@ -10,6 +10,12 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
+declare global {
+  interface Window {
+    __lenis?: Lenis;
+  }
+}
+
 /**
  * Wires Lenis's inertia scrolling into GSAP's ticker so ScrollTrigger-driven
  * sequences (see components/hero.tsx) read the same eased scroll position
@@ -28,6 +34,7 @@ export function SmoothScroll({ children }: { children: ReactNode }) {
     });
 
     lenis.on("scroll", ScrollTrigger.update);
+    window.__lenis = lenis;
 
     function raf(time: number) {
       lenis.raf(time * 1000);
@@ -38,6 +45,7 @@ export function SmoothScroll({ children }: { children: ReactNode }) {
     return () => {
       gsap.ticker.remove(raf);
       lenis.destroy();
+      window.__lenis = undefined;
     };
   }, []);
 

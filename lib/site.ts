@@ -30,6 +30,12 @@ export const site = {
     url: "https://instagram.com/jaaythecreaator",
   },
 
+  // REPLACE with the real TikTok handle and URL once one exists.
+  tiktok: {
+    handle: "@jaaythecreaator",
+    url: "https://tiktok.com/@jaaythecreaator",
+  },
+
   nav: [
     { label: "Work", href: "/work" },
     { label: "About", href: "/about" },

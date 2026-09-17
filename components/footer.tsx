@@ -1,6 +1,6 @@
 import { TransitionLink } from "./transition";
 import { MagneticButton } from "./magnetic-button";
-import { InstagramIcon, EmailIcon, WhatsAppIcon } from "./social-icons";
+import { InstagramIcon, EmailIcon, TikTokIcon } from "./social-icons";
 import { site } from "@/lib/site";
 
 export function Footer() {
@@ -42,14 +42,14 @@ export function Footer() {
             </a>
           </div>
           <div>
-            <WhatsAppIcon className="text-paper/40" />
+            <TikTokIcon className="text-paper/40" />
             <a
-              href={site.whatsapp}
+              href={site.tiktok.url}
               target="_blank"
               rel="noreferrer"
               className="mt-3 inline-block text-paper transition-colors hover:text-wine-soft"
             >
-              Message us
+              {site.tiktok.handle}
             </a>
           </div>
           <div>

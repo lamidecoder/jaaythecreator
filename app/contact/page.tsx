@@ -28,10 +28,10 @@ export default function ContactPage() {
                 </dd>
               </div>
               <div>
-                <dt className="text-paper/40">WhatsApp</dt>
+                <dt className="text-paper/40">TikTok</dt>
                 <dd className="mt-1">
-                  <a href={site.whatsapp} className="text-paper transition-colors hover:text-wine-soft">
-                    {site.phone}
+                  <a href={site.tiktok.url} className="text-paper transition-colors hover:text-wine-soft">
+                    {site.tiktok.handle}
                   </a>
                 </dd>
               </div>

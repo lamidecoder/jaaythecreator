@@ -17,6 +17,17 @@ export function EmailIcon({ className }: { className?: string }) {
   );
 }
 
+export function TikTokIcon({ className }: { className?: string }) {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
+      <path
+        d="M16.5 2c.3 2.2 1.7 3.7 3.9 3.9v2.9c-1.4 0-2.7-.4-3.9-1.2v6.4c0 3.1-2.3 5.5-5.5 5.5-3.1 0-5.5-2.4-5.5-5.5s2.4-5.5 5.5-5.5c.3 0 .6 0 .9.1v2.9c-.3-.1-.6-.1-.9-.1-1.5 0-2.7 1.2-2.7 2.6 0 1.5 1.2 2.7 2.7 2.7 1.5 0 2.8-1.2 2.8-2.7V2h2.7z"
+        fill="currentColor"
+      />
+    </svg>
+  );
+}
+
 export function WhatsAppIcon({ className }: { className?: string }) {
   return (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
