@@ -76,7 +76,15 @@ export function Footer() {
           <p>
             © {new Date().getFullYear()} {site.name}. All rights reserved.
             <span className="mx-2 text-paper/20">·</span>
-            Built by NexusHouseUK
+            Built by{" "}
+            <a
+              href="https://www.nexushousehq.com/"
+              target="_blank"
+              rel="noreferrer"
+              className="transition-colors hover:text-paper/70"
+            >
+              NexusHouseUK
+            </a>
           </p>
           <div className="flex gap-6">
             {site.nav.map((item) => (
